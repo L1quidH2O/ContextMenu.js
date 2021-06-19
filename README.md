@@ -50,10 +50,10 @@ Each object in the the Array is an Item in the ContextMenu
 Create Custom CSS by changing the following classes:
 |           Class         |  Element Type  |
 | :---------------------- | :------------: |
-| .contextmenu-container  | <div>          |
-| .contextmenu-divider    | <hr>           |
-| .contextmenu-text       | <span>         |
-| .contextmenu-extraText  | <span>         |
+| .contextmenu-container  | \<div\>          |
+| .contextmenu-divider    | \<hr\>           |
+| .contextmenu-text       | \<span\>         |
+| .contextmenu-extraText  | \<span\>         |
 
 # NOTE
 Sub-ContextMenus will not work on ContextMenus with heights larger than the windows height
