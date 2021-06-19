@@ -44,7 +44,7 @@ Each object in the the Array is an Item in the ContextMenu
 - "extraText": [String] text to display on right side of Item (Used for shortcuts such as "ctrl+s")
 - "onclick": [Function] function to run when Item is clicked, first argument is click event
 - "sub": [Array] create a Sub-ContextMenu (Multi-Level ContextMenu), syntax is the same as Structure, hovering over Item will open Sub-ContextMenu
-- "divider": Divider is not part of an Item, its an <hr> element
+- "divider": Divider is not part of an Item, its a \<hr\> element
 
 ### Custom CSS
 Create Custom CSS by changing the following classes:
