@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+    <head>
+        <style>
+            html,body{
+                height:180%;
+                width:180%;
+                background-color: rgb(26, 26, 26);
+                color:white;
+            }
+        </style>
+
+    </head>
+
+    <body>
+        right click to view demo
+    </body>
+
+    <script src="contextmenu.js"></script>
+    <script>
+        createContextmenu('body', [
+            {},
+            {
+                'text': 'This is just an example',
+                'extraText': 'cool!'
+            },
+            'divider',
+            {
+                'text': 'Click me',
+                'onclick': e=>alert('nice')
+            },
+            {
+                'text': 'Save',
+                'extraText': 'ctrl+s'
+            },
+            {
+                'text': 'Delete',
+                'extraText': 'ctrl+shift+d'
+            },
+            'divider',
+            {
+                'text': 'Sub-Menu',
+                'sub':[
+                    {
+                        'text': 'larger than window height!'
+                    },
+                    {},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},
+                ]
+            },
+            {
+                'text': 'Sub-Menu',
+                'sub':[
+                    {
+                        'text': 'larger than half of window height!'
+                    },
+                    {},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},
+                    {
+                        'sub': [
+                            {},{},{
+                                'sub': [{},{},{}]
+                            },
+                            {},{},{
+                                'sub': [
+                                    {},{},{
+                                        'sub': [
+                                            {},{},{},{},{},{},{
+                                                'sub':[
+                                                    {},{},{},{},{},{},
+                                                ]
+                                            },{},{},
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                ]
+            }
+        ])
+    </script>
+    
+</html>
