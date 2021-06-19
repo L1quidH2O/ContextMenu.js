@@ -33,7 +33,7 @@ document.addEventListener('mousedown', e => {
             border:3px solid rgb(215, 215, 215);
 
             font-family: Arial, helvetica, sans-serif, serif;
-            font-size: 13px;
+            font-size: 15px;
         }
 
         .contextmenu-divider{
