@@ -263,6 +263,6 @@ function createContextmenu(ele, menu, type) {
 
     elem.addEventListener(type, e => {
         e.preventDefault();
-        buildContextmenu(menu, e.pageX - window.scrollX, e.pageY - window.scrollY, document.body)
+        buildContextmenu(menu, e.pageX - document.documentElement.scrollLeft, e.pageY - document.documentElement.scrollTop, document.body)
     })
 }
