@@ -33,7 +33,7 @@ document.addEventListener('mousedown', e => {
             border:3px solid rgb(215, 215, 215);
 
             font-family: Arial, helvetica, sans-serif, serif;
-            font-size: 15px;
+            font-size: 13px;
         }
 
         .contextmenu-divider{
@@ -56,9 +56,13 @@ document.addEventListener('mousedown', e => {
             color:rgb(0,0,0,0.6);
         }
 
+        .contextmenu-focus{
+            background-color:rgb(220, 220, 220);
+        }
+
         .contextmenu-item:hover{
             background-color:rgb(235, 235, 235);
-        }
+        }        
     `
 
     document.head.prepend(styleEle)
@@ -94,42 +98,50 @@ function buildContextmenu(menu, left, top, loc) {
 
         if (typeof d === 'object') {
             let item = document.createElement('div')
-            item.className = "contextmenu-item"
+            item.style.position = 'relative'
+
+            let hovArea = document.createElement('div')
+            hovArea.style.width = '100%'
+            hovArea.style.height = '100%'
+            hovArea.className = "contextmenu-item"
+            hovArea.style.display = 'flex'
+            hovArea.style.justifyContent = 'space-between'
+            hovArea.style.cursor = 'pointer'
+
+            item.appendChild(hovArea)
 
             let text = document.createElement('span')
             text.className = "contextmenu-text"
             text.textContent = d.text || 'text'
 
 
-            item.style.display = 'flex'
-            item.style.justifyContent = 'space-between'
-            item.style.cursor = 'pointer'
-            item.style.position = 'relative'
-
-
+            hovArea.addEventListener('mouseenter', () => {
+                var focused = outer.childNodes
+                focused.forEach(d=>{
+                    if(d.classList.contains('contextmenu-focus')){
+                        d.removeChild(d.getElementsByClassName('contextmenu-container')[0])
+                        d.classList.remove('contextmenu-focus')
+                    }
+                })
+            })
 
             if (d.hasOwnProperty('sub')) {
                 text.textContent += " ->"
 
-                item.addEventListener('mouseenter', () => {
+                hovArea.addEventListener('mouseenter', () => {
+                    item.classList.add('contextmenu-focus')
                     buildContextmenu(d.sub, 0, 0, item)
-                })
-
-                item.addEventListener('mouseleave', () => {
-                    if (item.getElementsByTagName('div').length) {
-                        item.removeChild(item.getElementsByTagName('div')[0])
-                    }
                 })
             }
 
-            item.appendChild(text)
+            hovArea.appendChild(text)
 
             if (d.hasOwnProperty('extraText')) {
                 let extraText = document.createElement('span')
                 extraText.className = "contextmenu-extraText contextmenu-text"
                 extraText.textContent = d.extraText
 
-                item.appendChild(extraText)
+                hovArea.appendChild(extraText)
             }
 
             outer.appendChild(item)
@@ -166,7 +178,6 @@ function buildContextmenu(menu, left, top, loc) {
 
         if (outer.offsetHeight > docHeight) {
             //is the contextmenu height larger than the window height?
-
             outer.style.top = 0
             outer.style.overflowY = 'scroll'
             outer.style.overflowX = 'hidden'
@@ -192,7 +203,7 @@ function buildContextmenu(menu, left, top, loc) {
 
         if (dimensionsOuter.height > docHeight) {
             //is the sub-contextmenu height larger than the window height?
-
+            
             outer.style.top = -dimensionsOuter.top + 'px'
             outer.style.overflowY = 'scroll'
             outer.style.overflowX = 'hidden'
@@ -200,7 +211,7 @@ function buildContextmenu(menu, left, top, loc) {
         }
         else if (dimensionsOuter.height < docHeight && dimensionsOuter.height > docHeight / 2) {
             //is the sub-contextmenu height smaller than the window height AND larger than half of window height?
-
+            
             if (dimensionsOuter.top - docHeight / 2 >= 0) { //If sub-contextmenu is closer to bottom of the screen
                 outer.style.top = -dimensionsOuter.top - dimensionsOuter.height + docHeight + 'px'
             }
@@ -221,18 +232,20 @@ function buildContextmenu(menu, left, top, loc) {
     {
         /*
             <div class="contextmenu-container">
-                <div class="contextmenu-item">
-                    <span class="contextmenu-text">text</span>
+                <div style="position: relative;">
+                    <div class="contextmenu-item">
+                        <span class="contextmenu-text">text</span>
+                    </div>
                 </div>
-                <div class="contextmenu-item">
-                    <span class="contextmenu-text">text (with submenu)</span>
-
+                <div class="contextmenu-focus" style="position: relative;">
+                    <div class="contextmenu-item">
+                        <span class="contextmenu-text">(sub) -></span>
+                    </div>
                     <div class="contextmenu-container">
                         <div class="contextmenu-item">
                             <span class="contextmenu-text">text</span>
                         </div>
                     </div>
-                </div>
             </div>
         */
     }
