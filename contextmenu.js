@@ -20,7 +20,7 @@ document.addEventListener('mousedown', e => {
             position: absolute;
             top:0;
             user-select:none;
-            z=index:100000;
+            z-index:100000;
 
             background-color:rgb(250, 250, 250);
             margin:0;
