@@ -4,7 +4,7 @@ Multi-level ContextMenu Created in Vanilla Javascript (No CSS Files)
 
 #### Import with jsDelivr
 `
-    <script src="https://cdn.jsdelivr.net/gh/L1quidH2O/ContextMenu.js/contextmenu.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/L1quidH2O/ContextMenu.js@latest/contextmenu.js"></script>
 `
 
 ### How to use
