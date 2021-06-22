@@ -34,6 +34,8 @@ document.addEventListener('mousedown', e => {
 
             font-family: Arial, helvetica, sans-serif, serif;
             font-size: 13px;
+            
+            color:rgb(0,0,0,0.8);
         }
 
         .contextmenu-divider{
@@ -45,7 +47,6 @@ document.addEventListener('mousedown', e => {
         .contextmenu-text{
             margin:0;
             padding:5px 10px;
-            color:rgb(0,0,0,0.8);
             pointer-events: none;
             white-space: nowrap;
         }
