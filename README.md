@@ -48,12 +48,54 @@ Each object in the the Array is an Item in the ContextMenu
 
 ### Custom CSS
 Create Custom CSS by changing the following classes:
-|           Class         |  Element Type  |
-| :---------------------- | :------------: |
-| .contextmenu-container  | \<div\>          |
-| .contextmenu-divider    | \<hr\>           |
-| .contextmenu-text       | \<span\>         |
-| .contextmenu-extraText  | \<span\>         |
+|           Class         |  Element Type  |                    Note                    |
+| :---------------------- | :------------: | :----------------------------------------- |
+| .contextmenu-container  | \<div\>        | ----
+| .contextmenu-item       | \<div\>        | ----
+| .contextmenu-divider    | \<hr\>         | ----
+| .contextmenu-text       | \<span\>       | ----
+| .contextmenu-extraText  | \<span\>       | Used mainly to display keyboard shortcut
+| .contextmenu-focus      | \<div\>        | A class name that is applied to .contextmenu-item if it has a sub-contextmenu that is opened
+
+### HTML Diagram:
+
+    <div class="contextmenu-container">
+        <div style="position: relative;">
+            <div class="contextmenu-item">
+                <span class="contextmenu-text">text</span>
+            </div>
+        </div>
+        <div class="contextmenu-focus" style="position: relative;">
+            <div class="contextmenu-item">
+                 <span class="contextmenu-text">(sub) -></span>
+            </div>
+            <div class="contextmenu-container">
+                <div class="contextmenu-item">
+                    <span class="contextmenu-text">text</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+The above Diagram would have this code:
+
+    CreateContextmenu(Element, [
+        {
+            "text": "text"
+        },
+        {
+            "text": "(Sub)",
+            "sub":[
+                {
+                    "text": "text"
+                },
+            ]
+        }
+    ], Click)
+
+
+Also, note that the opened sub-contextmenu has the class ".contextmenu-focus"
 
 # NOTE
 Sub-ContextMenus will not work on ContextMenus with heights larger than the windows height
