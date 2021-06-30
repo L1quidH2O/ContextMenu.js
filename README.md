@@ -9,7 +9,7 @@ Multi-level ContextMenu Created in Vanilla Javascript (No CSS Files)
 
 ### How to use
     createContextMenu(Element, Structure, Click)
-- Element : a selector like "#div", its where the ContextMenu can be activated (Element is "body" in demo)
+- Element : could be a selector like `"#div"`, or a DOM Element like `document.body`
 - Structure : an Array that contains information about the structure of the ContextMenu (Will be explained below)
 - Click : leave it undefined for the ContextMenu to be activated by a right-click, define it so it would be activated by a left-click
 
