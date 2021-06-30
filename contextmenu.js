@@ -247,6 +247,7 @@ function buildContextmenu(menu, left, top, loc) {
                             <span class="contextmenu-text">text</span>
                         </div>
                     </div>
+                </div>
             </div>
         */
     }
@@ -255,8 +256,15 @@ function buildContextmenu(menu, left, top, loc) {
 
 
 function createContextmenu(ele, menu, type) {
-    const elem = document.querySelector(ele);
-    if (elem === undefined) { console.error("Element does not exist"); return }
+    let elem;
+
+    if(typeof ele === 'string'){
+        elem = document.querySelector(ele);
+    }
+    else{
+        elem = ele
+    }
+      
 
 
     // type has value ? click : contextmenu
